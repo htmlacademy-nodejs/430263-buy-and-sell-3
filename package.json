@@ -5,8 +5,11 @@
   "main": "./src/service/service.js",
   "scripts": {
     "start": "node ./src/service/service.js",
+    "start:generate": "npm run start -- --generate",
+    "start:version": "npm run start -- --version",
     "test": "npm run eslint",
-    "eslint": "eslint --ext .js src/"
+    "eslint": "eslint --ext .js --color src/",
+    "eslint:fix": "npm run eslint -- --fix"
   },
   "author": "Vashkina Evgeniya",
   "license": "ISC",
