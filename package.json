@@ -1,0 +1,17 @@
+{
+  "name": "buy-and-sell",
+  "version": "1.0.0",
+  "description": "Куплю. Продам",
+  "main": "./src/service/service.js",
+  "scripts": {
+    "start": "node ./src/service/service.js",
+    "test": "npm run eslint",
+    "eslint": "eslint --ext .js src/"
+  },
+  "author": "Vashkina Evgeniya",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "7.17.0",
+    "eslint-config-htmlacademy": "0.6.0"
+  }
+}
