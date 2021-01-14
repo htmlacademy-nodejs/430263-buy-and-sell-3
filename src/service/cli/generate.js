@@ -4,10 +4,12 @@ const fs = require(`fs`);
 const {ExitCode} = require(`../../enums`);
 const utils = require(`../../utils`);
 
-const DEFAULT_COUNT = 1;
-const MAX_COUNT = 1000;
-
 const FILE_NAME = `mocks.json`;
+
+const OffersCount = {
+  DEFAULT: 1,
+  MAX: 1000,
+};
 
 const OfferType = {
   OFFER: `offer`,
@@ -82,9 +84,9 @@ const PictureNumberRestriction = {
   MAX: 16
 };
 
-function generateOffers(count = DEFAULT_COUNT) {
-  if (count > MAX_COUNT) {
-    console.error(`Не больше ${MAX_COUNT} объявлений`);
+function generateOffers(count = OffersCount.DEFAULT) {
+  if (count > OffersCount.MAX) {
+    console.error(`Не больше ${OffersCount.MAX} объявлений`);
 
     process.exit(ExitCode.Error);
   }
@@ -131,7 +133,7 @@ module.exports = {
   run(args = []) {
     const [count] = args;
 
-    const normalizedCount = Number.parseInt(count, 10) || DEFAULT_COUNT;
+    const normalizedCount = Number.parseInt(count, 10) || OffersCount.DEFAULT;
 
     const content = JSON.stringify(generateOffers(normalizedCount), null, `\t`);
 
