@@ -4,6 +4,7 @@ const fs = require(`fs`);
 const {ExitCode} = require(`../../enums`);
 const utils = require(`../../utils`);
 
+// region Constants
 const FILE_NAME = `mocks.json`;
 
 const OffersCount = {
@@ -32,6 +33,7 @@ const TITLES = {
   ]
 };
 
+// region Sentences
 const SENTENCES = {
   [OfferType.OFFER]: [
     `Куплю СРОЧНО!`,
@@ -60,7 +62,9 @@ const SentencesCountRestriction = {
   MIN: 1,
   MAX: 5
 };
+// endregion Sentences
 
+// region Categories
 const CATEGORIES = [
   `Книги`,
   `Разное`,
@@ -73,6 +77,7 @@ const CategoriesCountRestriction = {
   MIN: 1,
   MAX: CATEGORIES.length
 };
+// endregion Categories
 
 const PriceRestriction = {
   MIN: 1000,
@@ -83,6 +88,7 @@ const PictureNumberRestriction = {
   MIN: 1,
   MAX: 16
 };
+// endregion Constants
 
 function generateOffers(count = OffersCount.DEFAULT) {
   if (count > OffersCount.MAX) {
@@ -105,6 +111,7 @@ function generateOffers(count = OffersCount.DEFAULT) {
   });
 }
 
+// region Utility functions
 function getRandomItemFromCollection(collection) {
   return collection[utils.getRandomInt(0, collection.length - 1)];
 }
@@ -127,6 +134,8 @@ function getPictureFileName(pictureNumber) {
 
   return `item${formattedPictureNumber}.jpg`;
 }
+
+// endregion Utility functions
 
 module.exports = {
   name: `generate`,
