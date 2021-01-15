@@ -1,8 +1,8 @@
 'use strict';
 
 const fs = require(`fs`);
-const {ExitCode} = require(`../../enums`);
 const utils = require(`../../utils`);
+const {FileGenerationFailedError, MockOffersMaxCountExceededError} = require(`../../errors`);
 
 // region Constants
 const FILE_NAME = `mocks.json`;
@@ -92,9 +92,9 @@ const PictureNumberRestriction = {
 
 function generateOffers(count = OffersCount.DEFAULT) {
   if (count > OffersCount.MAX) {
-    console.error(`Не больше ${OffersCount.MAX} объявлений`);
+    utils.ErrorHandler.handleError(new MockOffersMaxCountExceededError(OffersCount.MAX));
 
-    process.exit(ExitCode.Error);
+    return undefined;
   }
 
   return Array(count).fill(null).map(() => {
@@ -148,12 +148,12 @@ module.exports = {
 
     fs.writeFile(FILE_NAME, content, (error) => {
       if (error) {
-        console.error(`Error while writing data to file: ${error}.`);
+        utils.ErrorHandler.handleError(new FileGenerationFailedError(error.message));
 
         return;
       }
 
-      console.info(`Operation successful. File created.`);
+      console.info(`Файл ${FILE_NAME} сформирован.`);
     });
   }
 };
