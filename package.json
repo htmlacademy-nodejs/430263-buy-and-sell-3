@@ -4,9 +4,12 @@
   "description": "Куплю. Продам",
   "main": "./src/service/service.js",
   "scripts": {
+    "eslint": "eslint --ext .js --color src/",
+    "eslint:fix": "npm run eslint -- --fix",
     "start": "node ./src/service/service.js",
-    "test": "npm run eslint",
-    "eslint": "eslint --ext .js src/"
+    "start:generate": "npm run start -- --generate",
+    "start:version": "npm run start -- --version",
+    "test": "npm run eslint"
   },
   "author": "Vashkina Evgeniya",
   "license": "ISC",

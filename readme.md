@@ -1,7 +1,7 @@
 # Учебный проект «Куплю. Продам» [![Build status][travis-image]][travis-url]
 
 * Студент: [Евгения](https://up.htmlacademy.ru/nodejs/3/user/430263).
-* Наставник: `Неизвестно`.
+* Наставник: [Владимир Коршунов](https://htmlacademy.ru/profile/id83596).
 
 ---
 
